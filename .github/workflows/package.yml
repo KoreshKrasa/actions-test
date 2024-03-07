@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+jobs:
+  package:
+    name: "Package zip"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: mkdir package
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - run: pip install --target ./package -r requirements.txt
+      - run: zip -r my_package.zip ./package
