@@ -12,3 +12,9 @@ jobs:
           python-version: 3.12
       - run: pip install --target ./package -r requireents.txt
       - run: zip -r my_package.zip ./package
+      - run: zip my_package.zip app.py
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: package.zip
+          path: my_package.zip
